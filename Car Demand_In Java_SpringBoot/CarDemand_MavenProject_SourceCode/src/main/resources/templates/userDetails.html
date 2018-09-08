@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Person List</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>Person List</h1>
+      <a href="/user_registration">Add Person</a>
+      <br/><br/>
+      <div>
+         <table border="1">
+            <tr>
+            <th>ID</th>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>Email</th>
+               <th>Contact</th>
+               <th>City</th>
+               <th>Country</th>
+               <th>Zip</th>
+               <th>License</th>
+            </tr>
+            <tr th:each ="person : ${usersList}">
+               <td th:utext="${person.id}">...</td>
+               <td th:utext="${person.firstName}">...</td>
+               <td th:utext="${person.lastName}">...</td>
+               <td th:utext="${person.email}">...</td>
+               <td th:utext="${person.contact}">...</td>
+               <td th:utext="${person.city}">...</td>
+               <td th:utext="${person.country}">...</td>
+               <td th:utext="${person.zip}">...</td>
+               <td th:utext="${person.license}">...</td>
+                              
+               <td> <a href="/" th:href="@{'/user_registration/' + ${person.id}}">edit </a></td>
+               <td> <a href="/" th:href="@{'/user_registration/delete/' + ${person.id}}">delete </a></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

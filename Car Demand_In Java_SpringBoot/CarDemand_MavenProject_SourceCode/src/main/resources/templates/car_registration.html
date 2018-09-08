@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+    <title>Car Registration</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div th:if="${param.success}">
+                <div class="alert alert-info">
+                    You've successfully registered a Car!
+                </div>
+            </div>
+
+            <h1>Car Entry</h1>
+            <form th:action="@{/car_registration}" th:object="${car}" method="post">
+
+                <p class="error-message"
+                   th:if="${#fields.hasGlobalErrors()}"
+                   th:each="error : ${#fields.errors('global')}"
+                   th:text="${error}">Validation error</p>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('manufacturer')}? 'has-error':''">
+                    <label for="manufacturer" class="control-label">Manufacturer*</label>
+                    <input id="manufacturer"
+                           class="form-control"
+                           th:field="*{manufacturer}"/>
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('manufacturer')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('model')}? 'has-error':''">
+                    <label for="model" class="control-label">Model*</label>
+                    <input id="model"
+                           class="form-control"
+                           th:field="*{model}"/>
+                    <p class="error-message"
+                       th:each="error: ${#fields.errors('model')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('engineType')}? 'has-error':''">
+                    <label for="engineType" class="control-label">engineType</label>
+                     <select id="engineType" class="form-control" th:field="*{engineType}">
+                         <option value=""> -- </option>
+                         <option th:each="fuel : ${fuelType}"
+                            th:value="${fuel}"
+                            th:utext="${fuel}"/>
+                  </select>
+                    
+                    <!--  <input id="engineType"
+                           class="form-control"
+                           th:field="*{engineType}"/>-->
+                    
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('engineType')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('makeYear')}? 'has-error':''">
+                    <label for="makeYear" class="control-label">Make Year</label>
+                    <input id="makeYear"
+                           class="form-control"
+                           th:field="*{makeYear}"/>
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('makeYear')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('fuelCapacity')}? 'has-error':''">
+                    <label for="fuelCapacity" class="control-label">Fuel Capacity</label>
+                    <input id="password"
+                           class="form-control"                          
+                           th:field="*{fuelCapacity}"/>
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('fuelCapacity')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('transmission')}? 'has-error':''">
+                    <label for="transmission" class="control-label">Transmission</label>
+                    <input id="transmission"
+                           class="form-control"
+                           
+                           th:field="*{transmission}"/>
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('transmission')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+                
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('interior')}? 'has-error':''">
+                    <label for="interior" class="control-label">Interior</label>
+                    <input id="interior"
+                           class="form-control"
+                           
+                           th:field="*{interior}"/>
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('interior')}"
+                       th:text="${error}">Validation error</p>
+                </div>                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <span><a href="/" th:href="@{/}">Go to Dashboard</a></span>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

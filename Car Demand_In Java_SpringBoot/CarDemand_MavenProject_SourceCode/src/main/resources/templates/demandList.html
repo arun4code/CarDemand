@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>demand List</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>Current Demand</h1>
+      <a href="/demand">Add new Demand</a>
+      <br/><br/>
+      <div>
+         <table border="1">
+            <tr>
+            <th>ID</th>
+               <th>pickup_location</th>
+               <th>dropoff_location</th>
+               <th>pickup_time</th>
+               <th>dropoff_time</th>
+               <th>manufacturer</th>
+               <th>model</th>
+               <th>engineType</th>
+               <th>transmission</th>
+               <th>interior</th>
+               <th>fuelCapacity</th>
+               <th>User</th>
+            </tr>
+            <tr th:each ="demand : ${demandList}">
+               <td th:utext="${demand.id}">...</td>
+               <td th:utext="${demand.pickup_location}">...</td>
+               <td th:utext="${demand.dropoff_location}">...</td>
+               <td th:utext="${demand.pickup_time}">...</td>
+               <td th:utext="${demand.dropoff_time}">...</td>
+               <td th:utext="${demand.manufacturer}">...</td>
+               <td th:utext="${demand.model}">...</td>
+               <td th:utext="${demand.engineType}">...</td>
+               <td th:utext="${demand.transmission}">...</td>
+               <td th:utext="${demand.interior}">...</td>
+               <td th:utext="${demand.fuelCapacity}">...</td>
+               <td > <a href="/" th:href="@{'/demand/user/' + ${demand.userId}}" th:utext="${demand.userId}" >...</a></td>
+                                             
+               <td> <a href="/" th:href="@{'/demand/' + ${demand.id}}">edit </a></td>
+               <td> <a href="/" th:href="@{'/demand/delete/' + ${demand.id}}">delete </a></td>
+               
+               
+               <td> 
+               <div th:if="${hideLabel}">
+               		Assigned
+               </div>
+               <div th:unless="${hideLabel}">
+               		<a href="/" th:href="@{'/demand/' + ${demand.id} (param1='assign')}">Assign a Car </a>
+               </div>
+               </td>
+               
+                              
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

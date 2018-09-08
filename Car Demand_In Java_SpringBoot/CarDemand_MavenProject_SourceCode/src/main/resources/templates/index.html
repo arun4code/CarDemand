@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+    <title>Car Demand Dashboard</title>
+</head>
+<body>
+<div class="container">
+    <h1>Login successfully</h1>
+    <h3></h3>
+    <h3><a href="/" th:href="@{/car_registration}">New Car registration</a></h3>
+    
+    <h3><a href="/" th:href="@{/user_registration}">New User registration</a></h3>
+    <h3><a href="/" th:href="@{/demand}">New Demand</a></h3>
+    
+    <h3></h3>    
+    <h3><a href="/" th:href="@{/users/users}">List all user using restfull service</a></h3>
+    
+    
+    <h3><a href="/" th:href="@{/users/cars}">List all cars using restfull service</a></h3>
+        <h3><a href="/" th:href="@{user_registration/usersList}">List all users</a></h3>
+        <h3><a href="/" th:href="@{demand/demandList}">List all demands</a></h3>
+        
+		<h3><a href="/" th:href="@{demand/currentDemandList}">Current demands</a></h3>
+        
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
